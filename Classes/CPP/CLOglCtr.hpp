@@ -9,7 +9,7 @@
 #ifndef CLOglCtr_hpp
 #define CLOglCtr_hpp
 
-#include "CLOOpenGLGlobal.h"
+#include "CLOglGlobal.h"
 CLONamespaceS
 
 class CLOglTexture;
@@ -27,6 +27,8 @@ public:
     
     bool fSetupImage(uint32_t index, CLOglTexture &texture);
     bool fSetupImage(uint32_t index, unsigned char *pData, eImageType type, uint32_t w, uint32_t h, bool needFree);
+    
+    bool fSetupFilter();
     
     bool fMakeImage();
     

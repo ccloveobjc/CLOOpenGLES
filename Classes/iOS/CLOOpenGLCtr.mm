@@ -8,6 +8,7 @@
 
 #import "CLOOpenGLCtr.h"
 #import "CLOOpenGLContext.h"
+#include "CLOglGlobal.h"
 
 @interface CLOOpenGLCtr()
 
@@ -22,6 +23,7 @@
     if (self) {
         
         _mGLContext = [[CLOOpenGLContext alloc] init];
+        CLOLog("CLOOpenGLCtr 初始化完成");
     }
     
     return self;

@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@class CLOOpenGLCtr;
+    @class CLOOpenGLCtr;
 
 @interface CLOOpenGLView : UIView
 
-    @property (nonatomic,strong,readonly) CLOOpenGLCtr *mGLContext;
+    @property (nonatomic,strong,readonly) CLOOpenGLCtr *mGLCtr;
 
-- (instancetype)initWithFrame:(CGRect)frame withContext:(CLOOpenGLCtr *)context;
+- (instancetype)initWithFrame:(CGRect)frame withGLCtr:(CLOOpenGLCtr *)ctr;
 
 @end

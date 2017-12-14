@@ -7,20 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		424BC2DC1FDFD2AE009DC0AF /* CLOglProgram.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 424BC2DA1FDFD2AE009DC0AF /* CLOglProgram.cpp */; };
+		42873C571FE121D700F39512 /* CLOglColorMatrixFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 42873C551FE121D700F39512 /* CLOglColorMatrixFilter.cpp */; };
+		42873C5A1FE1223B00F39512 /* CLOglFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 42873C581FE1223B00F39512 /* CLOglFilter.cpp */; };
 		429425891FD52A08001C3E35 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 429425881FD52A08001C3E35 /* AppDelegate.m */; };
 		4294258C1FD52A08001C3E35 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4294258B1FD52A08001C3E35 /* ViewController.m */; };
 		4294258F1FD52A08001C3E35 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4294258D1FD52A08001C3E35 /* Main.storyboard */; };
 		429425911FD52A08001C3E35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 429425901FD52A08001C3E35 /* Assets.xcassets */; };
 		429425941FD52A08001C3E35 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 429425921FD52A08001C3E35 /* LaunchScreen.storyboard */; };
 		429425971FD52A08001C3E35 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 429425961FD52A08001C3E35 /* main.m */; };
-		429425A31FD52AB7001C3E35 /* CLOOpenGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 429425A21FD52AB7001C3E35 /* CLOOpenGLView.m */; };
+		429425A31FD52AB7001C3E35 /* CLOOpenGLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 429425A21FD52AB7001C3E35 /* CLOOpenGLView.mm */; };
 		429425A61FD62D59001C3E35 /* CLOglCtr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 429425A41FD62D59001C3E35 /* CLOglCtr.cpp */; };
 		429425AA1FD637C5001C3E35 /* CLOglTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 429425A81FD637C5001C3E35 /* CLOglTexture.cpp */; };
-		429425AD1FD64925001C3E35 /* CLOOpenGLCtr.m in Sources */ = {isa = PBXBuildFile; fileRef = 429425AC1FD64925001C3E35 /* CLOOpenGLCtr.m */; };
-		429425B01FD649C7001C3E35 /* CLOOpenGLContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 429425AF1FD649C7001C3E35 /* CLOOpenGLContext.m */; };
+		429425AD1FD64925001C3E35 /* CLOOpenGLCtr.mm in Sources */ = {isa = PBXBuildFile; fileRef = 429425AC1FD64925001C3E35 /* CLOOpenGLCtr.mm */; };
+		429425B01FD649C7001C3E35 /* CLOOpenGLContext.mm in Sources */ = {isa = PBXBuildFile; fileRef = 429425AF1FD649C7001C3E35 /* CLOOpenGLContext.mm */; };
+		42F8EA671FD6A1F80007229D /* CLOglFrameBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 42F8EA651FD6A1F80007229D /* CLOglFrameBuffer.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		424BC2DA1FDFD2AE009DC0AF /* CLOglProgram.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CLOglProgram.cpp; sourceTree = "<group>"; };
+		424BC2DB1FDFD2AE009DC0AF /* CLOglProgram.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CLOglProgram.hpp; sourceTree = "<group>"; };
+		42873C551FE121D700F39512 /* CLOglColorMatrixFilter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CLOglColorMatrixFilter.cpp; sourceTree = "<group>"; };
+		42873C561FE121D700F39512 /* CLOglColorMatrixFilter.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CLOglColorMatrixFilter.hpp; sourceTree = "<group>"; };
+		42873C581FE1223B00F39512 /* CLOglFilter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CLOglFilter.cpp; sourceTree = "<group>"; };
+		42873C591FE1223B00F39512 /* CLOglFilter.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CLOglFilter.hpp; sourceTree = "<group>"; };
 		429425841FD52A08001C3E35 /* CLOOpenGLESDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CLOOpenGLESDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		429425871FD52A08001C3E35 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		429425881FD52A08001C3E35 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -32,16 +42,18 @@
 		429425951FD52A08001C3E35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		429425961FD52A08001C3E35 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		429425A11FD52AB7001C3E35 /* CLOOpenGLView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLOOpenGLView.h; sourceTree = "<group>"; };
-		429425A21FD52AB7001C3E35 /* CLOOpenGLView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLOOpenGLView.m; sourceTree = "<group>"; };
+		429425A21FD52AB7001C3E35 /* CLOOpenGLView.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = CLOOpenGLView.mm; sourceTree = "<group>"; };
 		429425A41FD62D59001C3E35 /* CLOglCtr.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CLOglCtr.cpp; sourceTree = "<group>"; };
 		429425A51FD62D59001C3E35 /* CLOglCtr.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CLOglCtr.hpp; sourceTree = "<group>"; };
-		429425A71FD62D7C001C3E35 /* CLOOpenGLGlobal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLOOpenGLGlobal.h; sourceTree = "<group>"; };
+		429425A71FD62D7C001C3E35 /* CLOglGlobal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLOglGlobal.h; sourceTree = "<group>"; };
 		429425A81FD637C5001C3E35 /* CLOglTexture.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CLOglTexture.cpp; sourceTree = "<group>"; };
 		429425A91FD637C5001C3E35 /* CLOglTexture.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CLOglTexture.hpp; sourceTree = "<group>"; };
 		429425AB1FD64925001C3E35 /* CLOOpenGLCtr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLOOpenGLCtr.h; sourceTree = "<group>"; };
-		429425AC1FD64925001C3E35 /* CLOOpenGLCtr.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLOOpenGLCtr.m; sourceTree = "<group>"; };
+		429425AC1FD64925001C3E35 /* CLOOpenGLCtr.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = CLOOpenGLCtr.mm; sourceTree = "<group>"; };
 		429425AE1FD649C7001C3E35 /* CLOOpenGLContext.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLOOpenGLContext.h; sourceTree = "<group>"; };
-		429425AF1FD649C7001C3E35 /* CLOOpenGLContext.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLOOpenGLContext.m; sourceTree = "<group>"; };
+		429425AF1FD649C7001C3E35 /* CLOOpenGLContext.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = CLOOpenGLContext.mm; sourceTree = "<group>"; };
+		42F8EA651FD6A1F80007229D /* CLOglFrameBuffer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CLOglFrameBuffer.cpp; sourceTree = "<group>"; };
+		42F8EA661FD6A1F80007229D /* CLOglFrameBuffer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CLOglFrameBuffer.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +67,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		424BC2D91FDFD224009DC0AF /* Filters */ = {
+			isa = PBXGroup;
+			children = (
+				42873C551FE121D700F39512 /* CLOglColorMatrixFilter.cpp */,
+				42873C561FE121D700F39512 /* CLOglColorMatrixFilter.hpp */,
+				42873C581FE1223B00F39512 /* CLOglFilter.cpp */,
+				42873C591FE1223B00F39512 /* CLOglFilter.hpp */,
+			);
+			path = Filters;
+			sourceTree = "<group>";
+		};
 		4294257B1FD52A08001C3E35 = {
 			isa = PBXGroup;
 			children = (
@@ -101,11 +124,16 @@
 		4294259F1FD52A8D001C3E35 /* CPP */ = {
 			isa = PBXGroup;
 			children = (
-				429425A81FD637C5001C3E35 /* CLOglTexture.cpp */,
-				429425A91FD637C5001C3E35 /* CLOglTexture.hpp */,
 				429425A41FD62D59001C3E35 /* CLOglCtr.cpp */,
 				429425A51FD62D59001C3E35 /* CLOglCtr.hpp */,
-				429425A71FD62D7C001C3E35 /* CLOOpenGLGlobal.h */,
+				42F8EA651FD6A1F80007229D /* CLOglFrameBuffer.cpp */,
+				42F8EA661FD6A1F80007229D /* CLOglFrameBuffer.hpp */,
+				429425A71FD62D7C001C3E35 /* CLOglGlobal.h */,
+				424BC2DA1FDFD2AE009DC0AF /* CLOglProgram.cpp */,
+				424BC2DB1FDFD2AE009DC0AF /* CLOglProgram.hpp */,
+				429425A81FD637C5001C3E35 /* CLOglTexture.cpp */,
+				429425A91FD637C5001C3E35 /* CLOglTexture.hpp */,
+				424BC2D91FDFD224009DC0AF /* Filters */,
 			);
 			path = CPP;
 			sourceTree = "<group>";
@@ -114,11 +142,11 @@
 			isa = PBXGroup;
 			children = (
 				429425AE1FD649C7001C3E35 /* CLOOpenGLContext.h */,
-				429425AF1FD649C7001C3E35 /* CLOOpenGLContext.m */,
+				429425AF1FD649C7001C3E35 /* CLOOpenGLContext.mm */,
 				429425AB1FD64925001C3E35 /* CLOOpenGLCtr.h */,
-				429425AC1FD64925001C3E35 /* CLOOpenGLCtr.m */,
+				429425AC1FD64925001C3E35 /* CLOOpenGLCtr.mm */,
 				429425A11FD52AB7001C3E35 /* CLOOpenGLView.h */,
-				429425A21FD52AB7001C3E35 /* CLOOpenGLView.m */,
+				429425A21FD52AB7001C3E35 /* CLOOpenGLView.mm */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -194,13 +222,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				429425A31FD52AB7001C3E35 /* CLOOpenGLView.m in Sources */,
+				429425A31FD52AB7001C3E35 /* CLOOpenGLView.mm in Sources */,
 				4294258C1FD52A08001C3E35 /* ViewController.m in Sources */,
+				42873C571FE121D700F39512 /* CLOglColorMatrixFilter.cpp in Sources */,
+				42873C5A1FE1223B00F39512 /* CLOglFilter.cpp in Sources */,
 				429425971FD52A08001C3E35 /* main.m in Sources */,
 				429425891FD52A08001C3E35 /* AppDelegate.m in Sources */,
+				424BC2DC1FDFD2AE009DC0AF /* CLOglProgram.cpp in Sources */,
+				42F8EA671FD6A1F80007229D /* CLOglFrameBuffer.cpp in Sources */,
 				429425AA1FD637C5001C3E35 /* CLOglTexture.cpp in Sources */,
-				429425B01FD649C7001C3E35 /* CLOOpenGLContext.m in Sources */,
-				429425AD1FD64925001C3E35 /* CLOOpenGLCtr.m in Sources */,
+				429425B01FD649C7001C3E35 /* CLOOpenGLContext.mm in Sources */,
+				429425AD1FD64925001C3E35 /* CLOOpenGLCtr.mm in Sources */,
 				429425A61FD62D59001C3E35 /* CLOglCtr.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

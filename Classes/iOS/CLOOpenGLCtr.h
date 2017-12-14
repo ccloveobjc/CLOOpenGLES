@@ -8,7 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+    @class CLOOpenGLContext;
+
 @interface CLOOpenGLCtr : NSObject
+
+    @property (nonatomic,strong,readonly) CLOOpenGLContext *mGLContext;
 
 - (instancetype)init;
 

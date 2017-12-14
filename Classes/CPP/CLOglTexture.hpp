@@ -9,7 +9,7 @@
 #ifndef CLOglTexture_hpp
 #define CLOglTexture_hpp
 
-#include "CLOOpenGLGlobal.h"
+#include "CLOglGlobal.h"
 CLONamespaceS
 
 class CLOglTexture {

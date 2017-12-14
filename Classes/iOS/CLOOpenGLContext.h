@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class EAGLContext;
+    @class EAGLContext;
 
 @interface CLOOpenGLContext : NSObject
 

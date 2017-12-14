@@ -1,13 +1,13 @@
 //
-//  CLOOpenGLGlobal.h
+//  CLOglGlobal.h
 //  CLOOpenGLESDemo
 //
 //  Created by Cc on 2017/12/5.
 //  Copyright © 2017年 Cc. All rights reserved.
 //
 
-#ifndef CLOOpenGLGlobal_h
-#define CLOOpenGLGlobal_h
+#ifndef CLOglGlobal_h
+#define CLOglGlobal_h
 
 #include <stdio.h>
 
@@ -29,9 +29,17 @@
 // 断言宏
 #include <cassert>
 #ifdef DEBUG
-    #define CLOAssert(b, fmt, ...) if ((b) == false){ printf((fmt), ##__VA_ARGS__); assert(false); }
+    #define CLOAssert(b, fmt, ...) if ((b) == false){ CLOLog(fmt, ##__VA_ARGS__); assert(false); }
 #else
     #define CLOAssert(b, fmt, ...)
 #endif
 
-#endif /* CLOOpenGLGlobal_h */
+// 日志
+#ifdef DEBUG
+    #define CLOLog(fm, ...) printf(fm, ##__VA_ARGS__); printf("\n")
+#else
+    #define CLOLog(fm, ...)
+#endif
+
+
+#endif /* CLOglGlobal_h */

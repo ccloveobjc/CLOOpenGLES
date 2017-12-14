@@ -9,26 +9,32 @@
 #import "CLOOpenGLContext.h"
 #import <OpenGLES/EAGL.h>
 #import <UIKit/UIKit.h>
+#include <string>
+#include "CLOglGlobal.h"
 
 @interface CLOOpenGLContext()
 
     @property (nonatomic,strong) dispatch_queue_t mContextQueue;
     @property (nonatomic,strong) EAGLContext *mEAGLContext;
+    @property (nonatomic,assign) std::string mQueueLabel;
 
 @end
 @implementation CLOOpenGLContext
 
-static void *sOpenGLESContextQueueKey;
 
 - (instancetype)init
 {
     self = [super init];
     if (self) {
         
-        sOpenGLESContextQueueKey = &sOpenGLESContextQueueKey;
-        _mContextQueue = dispatch_queue_create("com.CLO.openGLESContextQueue", [self fGetQueueAttribute]);
-        dispatch_queue_set_specific(_mContextQueue, sOpenGLESContextQueueKey, (__bridge void * _Nullable)(self), NULL);
+        NSString *uuid = [[NSUUID UUID] UUIDString];
+        std::string cuuid = std::string([uuid UTF8String]);
+        _mQueueLabel = "com.CLO.openGLESContextQueue" + cuuid;
+        
+        _mContextQueue = dispatch_queue_create(self.mQueueLabel.c_str(), [self fGetQueueAttribute]);
+
         _mEAGLContext = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
+        CLOLog("CLOOpenGLContext 初始化完成。 使用线程: %s", _mQueueLabel.c_str());
     }
     
     return self;
@@ -36,7 +42,7 @@ static void *sOpenGLESContextQueueKey;
 
 - (void)dealloc
 {
-    printf("CLOOpenGLContext dealloc");
+    CLOLog("CLOOpenGLContext dealloc");
 }
 
 - (dispatch_queue_attr_t)fGetQueueAttribute
@@ -58,21 +64,14 @@ static void *sOpenGLESContextQueueKey;
 }
 - (void)runSynchronouslyOnContextQueue:(void (^)(void))block
 {
-    dispatch_queue_t videoProcessingQueue = self.mContextQueue;
-#if !OS_OBJECT_USE_OBJC
-    #pragma clang diagnostic push
-    #pragma clang diagnostic ignored "-Wdeprecated-declarations"
-    if (dispatch_get_current_queue() == self.mEAGLContext)
-    #pragma clang diagnostic pop
-#else
-    if (dispatch_get_specific(sOpenGLESContextQueueKey))
-#endif
-    {
+    const char* label = dispatch_queue_get_label(self.mContextQueue);
+    if (strcmp(self.mQueueLabel.c_str(), label)) {
+        
         block();
     }
     else {
         
-        dispatch_sync(videoProcessingQueue, block);
+        dispatch_sync(self.mContextQueue, block);
     }
 }
 @end
