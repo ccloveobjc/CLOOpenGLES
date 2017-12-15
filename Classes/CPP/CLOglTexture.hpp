@@ -10,23 +10,33 @@
 #define CLOglTexture_hpp
 
 #include "CLOglGlobal.h"
-CLONamespaceS
+#include <memory>
+#include <string>
+
+CLOCNamespaceS
 
 class CLOglTexture {
 public:
     CLOglTexture();
-    CLOglTexture(uint32_t textureID, uint32_t w, uint32_t h, bool needFree);
+    CLOglTexture(uint32_t textureID, uint32_t width, uint32_t height, bool needFree);
     ~CLOglTexture();
     
+    std::string fDescription();
+    
+    uint32_t fGetTextureID();
+    uint32_t fGetWidth();
+    uint32_t fGetHeight();
+    
+    static std::shared_ptr<CLOglTexture> sCreateTexture(unsigned char *pPixel, uint32_t width, uint32_t height);
     
 private:
     uint32_t mTextureID = 0;
-    uint32_t mW = 0;
-    uint32_t mH = 0;
+    uint32_t mWidth = 0;
+    uint32_t mHeight = 0;
     bool mNeedFree = false;
     
     bool fDeleteTexture();
 };
 
-CLONamespaceE
+CLOCNamespaceE
 #endif /* CLOglTexture_hpp */

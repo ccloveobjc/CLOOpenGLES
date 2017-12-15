@@ -12,33 +12,33 @@
 #include <stdio.h>
 
 // 释放宏
-#define CLOClassRelease(cls) if (cls) { \
+#define CLOCClassRelease(cls) if (cls) { \
     delete cls; \
     cls = nullptr; \
 }
-#define CLOArrayRelease(arr) if (arr) { \
+#define CLOCArrayRelease(arr) if (arr) { \
     delete [] arr; \
     arr = nullptr; \
 }
 
 // 命名空间宏
-#define CLONamespaceS namespace CLO {
-#define CLONamespaceE }
-#define CLONamespaceUse using namespace CLO;
+#define CLOCNamespaceS namespace CLO {
+#define CLOCNamespaceE }
+#define CLOCNamespaceUse using namespace CLO;
 
 // 断言宏
 #include <cassert>
 #ifdef DEBUG
-    #define CLOAssert(b, fmt, ...) if ((b) == false){ CLOLog(fmt, ##__VA_ARGS__); assert(false); }
+    #define CLOCAssert(b, fmt, ...) if ((b) == false){ CLOCLog(fmt, ##__VA_ARGS__); assert(false); }
 #else
-    #define CLOAssert(b, fmt, ...)
+    #define CLOCAssert(b, fmt, ...)
 #endif
 
 // 日志
 #ifdef DEBUG
-    #define CLOLog(fm, ...) printf(fm, ##__VA_ARGS__); printf("\n")
+    #define CLOCLog(fm, ...) printf(fm, ##__VA_ARGS__); printf("\n")
 #else
-    #define CLOLog(fm, ...)
+    #define CLOCLog(fm, ...)
 #endif
 
 

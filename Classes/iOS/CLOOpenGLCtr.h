@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
     @class CLOOpenGLContext;
 
@@ -15,5 +16,13 @@
     @property (nonatomic,strong,readonly) CLOOpenGLContext *mGLContext;
 
 - (instancetype)init;
+
+- (BOOL)fSetupImage:(UIImage *)img withIndex:(NSUInteger)index;
+
+- (BOOL)fSetupEffect:(NSString *)string;
+
+- (BOOL)fMake;
+
+- (UIImage *)fGetMakedImage;
 
 @end

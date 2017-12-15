@@ -15,11 +15,11 @@
 #import <OpenGLES/ES2/gl.h>
 #import <OpenGLES/ES2/glext.h>
 
-CLONamespaceS
+CLOCNamespaceS
 
 class CLOglProgram {
 public:
-    CLOglProgram(const char *vertexShaderCodeString, const char *fragmentShaderCodeString);
+    CLOglProgram(const std::string vertexShaderCodeString, const std::string fragmentShaderCodeString);
     ~CLOglProgram();
     
     bool fLink();
@@ -27,7 +27,7 @@ public:
     
 private:
     
-    bool fCompileShader(GLuint *shader, GLenum type, const char *shaderCodeString);
+    bool fCompileShader(GLuint *shader, const GLenum type, const std::string shaderCodeString);
     
     GLuint mProgramID = 0;
     GLuint mVertexShaderID = 0;
@@ -42,5 +42,5 @@ private:
     std::string mProgramLog;
 };
 
-CLONamespaceE
+CLOCNamespaceE
 #endif /* CLOglProgram_hpp */

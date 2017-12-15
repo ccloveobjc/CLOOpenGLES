@@ -14,4 +14,6 @@
 
     @property (nonatomic,strong,readonly) EAGLContext *mEAGLContext;
 
+- (void)fRunSynchronouslyOnContextQueue:(void (^)(void))block;
+
 @end

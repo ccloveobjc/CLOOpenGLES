@@ -8,7 +8,7 @@
 
 #import "CLOOpenGLView.h"
 #import "CLOOpenGLCtr.h"
-#include "CLOglGlobal.h"
+#import "CLOOpenGLGlobal.h"
 
 @interface CLOOpenGLView()
 
@@ -38,10 +38,20 @@
                                          kEAGLDrawablePropertyRetainedBacking : @YES ,
                                          kEAGLDrawablePropertyColorFormat : kEAGLColorFormatRGBA8 ,
                                          };
-        CLOLog("CLOOpenGLView 初始化完成");
+        CLONSLog(@"CLOOpenGLView 初始化完成");
     }
     
     return self;
+}
+
+- (void)dealloc
+{
+    CLONSLog(@"CLOOpenGLView dealloc");
+}
+
+- (BOOL)fRenderBuffer:(CMSampleBufferRef)buffer
+{
+    return NO;
 }
 
 @end

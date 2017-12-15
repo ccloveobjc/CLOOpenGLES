@@ -7,3 +7,5 @@
 //
 
 #include "CLOglColorMatrixFilter.hpp"
+
+CLOCNamespaceUse

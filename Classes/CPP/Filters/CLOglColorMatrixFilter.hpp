@@ -10,14 +10,15 @@
 #define CLOglColorMatrixFilter_hpp
 
 #include <stdio.h>
-#include "CLOglGlobal.h"
+#include "CLOglFilter.hpp"
 
-CLONamespaceS
+CLOCNamespaceS
 
-class CLOglColorMatrixFilter {
+class CLOglColorMatrixFilter : CLOglFilter {
 public:
-    
+    CLOglColorMatrixFilter();
+    ~CLOglColorMatrixFilter();
 };
 
-CLONamespaceE
+CLOCNamespaceE
 #endif /* CLOglColorMatrixFilter_hpp */

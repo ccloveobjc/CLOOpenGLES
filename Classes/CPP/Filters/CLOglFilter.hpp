@@ -11,17 +11,30 @@
 
 #include <stdio.h>
 #include "CLOglGlobal.h"
+#include <string>
+#include <memory>
 
-CLONamespaceS
+CLOCNamespaceS
 
 class CLOglProgram;
+class CLOglSession;
 
 class CLOglFilter {
 public:
+    CLOglFilter();
+    CLOglFilter(std::shared_ptr<CLOglSession> session);
+    CLOglFilter(const std::string vertexShaderCodeString, const std::string fragmentShaderCodeString);
+    CLOglFilter(std::shared_ptr<CLOglSession> session, const std::string vertexShaderCodeString, const std::string fragmentShaderCodeString);
+    ~CLOglFilter();
+    
+    
     
 private:
-    CLOglProgram *mProgram;
+    std::shared_ptr<CLOglSession> mSession;
+    std::shared_ptr<CLOglProgram> mProgram;
+    std::string mVertexShaderString;
+    std::string mFragmentShaderString;
 };
 
-CLONamespaceE
+CLOCNamespaceE
 #endif /* CLOglFilter_hpp */

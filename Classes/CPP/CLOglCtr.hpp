@@ -10,31 +10,31 @@
 #define CLOglCtr_hpp
 
 #include "CLOglGlobal.h"
-CLONamespaceS
+#include "CLOglCommon.hpp"
+#include <memory>
+#include <string>
+
+CLOCNamespaceS
 
 class CLOglTexture;
-
-enum eImageType : int {
-    
-    eImageType_RGBA = 0,
-    eImageType_BGRA
-};
+class CLOglFilter;
+class CLOglSession;
 
 class CLOglCtr {
 public:
     CLOglCtr();
     ~CLOglCtr();
     
-    bool fSetupImage(uint32_t index, CLOglTexture &texture);
-    bool fSetupImage(uint32_t index, unsigned char *pData, eImageType type, uint32_t w, uint32_t h, bool needFree);
+    bool fSetupImage(uint32_t index, std::shared_ptr<CLOglTexture> texture);
+    bool fSetupImage(uint32_t index, unsigned char *pPixel, eImageType type, uint32_t width, uint32_t height);
     
-    bool fSetupFilter();
+    bool fSetupEffectString(std::string effectStr);
     
     bool fMakeImage();
     
 private:
-    
+    std::shared_ptr<CLOglSession> mSession;
 };
 
-CLONamespaceE
+CLOCNamespaceE
 #endif /* CLOglCtr_hpp */

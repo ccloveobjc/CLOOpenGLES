@@ -8,23 +8,23 @@
 
 #include "CLOglProgram.hpp"
 
-CLONamespaceUse
+CLOCNamespaceUse
 
-CLOglProgram::CLOglProgram(const char *vertexShaderCodeString, const char *fragmentShaderCodeString)
+CLOglProgram::CLOglProgram(const std::string vertexShaderCodeString, const std::string fragmentShaderCodeString)
 {
     mAttributes.clear();
     mUniforms.clear();
     
     mProgramID = glCreateProgram();
-    CLOAssert(mProgramID != 0, "Failed to glCreateProgram() == 0");
+    CLOCAssert(mProgramID != 0, "Failed to glCreateProgram() == 0");
     
     if ( ! fCompileShader(&mVertexShaderID, GL_VERTEX_SHADER, vertexShaderCodeString)) {
         
-        CLOAssert(false, "Failed to compile vertex shader. Error:%s", mVertexShaderLog.c_str());
+        CLOCAssert(false, "Failed to compile vertex shader. Error:%s", mVertexShaderLog.c_str());
     }
     if ( ! fCompileShader(&mFragmentShaderID, GL_FRAGMENT_SHADER, fragmentShaderCodeString)) {
         
-        CLOAssert(false, "Failed to compile fragment shader. Error:%s", mFragmentShaderLog.c_str());
+        CLOCAssert(false, "Failed to compile fragment shader. Error:%s", mFragmentShaderLog.c_str());
     }
     
     glAttachShader(mProgramID, mVertexShaderID);
@@ -80,9 +80,9 @@ bool CLOglProgram::fUse()
     return false;
 }
 
-bool CLOglProgram::fCompileShader(GLuint *shader, GLenum type, const char *shaderCodeString)
+bool CLOglProgram::fCompileShader(GLuint *shader, const GLenum type, const std::string shaderCodeString)
 {
-    const GLchar *source = const_cast<GLchar *>(shaderCodeString);
+    const GLchar *source = const_cast<GLchar *>(shaderCodeString.c_str());
     
     // 开始编译
     GLuint shaderID = glCreateShader(type);
@@ -110,7 +110,7 @@ bool CLOglProgram::fCompileShader(GLuint *shader, GLenum type, const char *shade
             }
             else {
                 
-                CLOAssert(false, "没有对应的变量保存值");
+                CLOCAssert(false, "没有对应的变量保存值");
             }
             
             delete [] log;
