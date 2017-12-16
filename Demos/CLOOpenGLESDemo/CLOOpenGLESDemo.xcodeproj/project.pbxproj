@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		42426DA11FE3773F00F03369 /* CLOglCommon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 42426D9F1FE3773F00F03369 /* CLOglCommon.cpp */; };
 		424BC2DC1FDFD2AE009DC0AF /* CLOglProgram.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 424BC2DA1FDFD2AE009DC0AF /* CLOglProgram.cpp */; };
+		4259BA0E1FE51C8D001F6555 /* CLOglPixel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4259BA0C1FE51C8D001F6555 /* CLOglPixel.cpp */; };
 		42873C571FE121D700F39512 /* CLOglColorMatrixFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 42873C551FE121D700F39512 /* CLOglColorMatrixFilter.cpp */; };
 		42873C5A1FE1223B00F39512 /* CLOglFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 42873C581FE1223B00F39512 /* CLOglFilter.cpp */; };
 		429425891FD52A08001C3E35 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 429425881FD52A08001C3E35 /* AppDelegate.m */; };
@@ -32,6 +33,8 @@
 		42426DA01FE3773F00F03369 /* CLOglCommon.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CLOglCommon.hpp; sourceTree = "<group>"; };
 		424BC2DA1FDFD2AE009DC0AF /* CLOglProgram.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CLOglProgram.cpp; sourceTree = "<group>"; };
 		424BC2DB1FDFD2AE009DC0AF /* CLOglProgram.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CLOglProgram.hpp; sourceTree = "<group>"; };
+		4259BA0C1FE51C8D001F6555 /* CLOglPixel.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CLOglPixel.cpp; sourceTree = "<group>"; };
+		4259BA0D1FE51C8D001F6555 /* CLOglPixel.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CLOglPixel.hpp; sourceTree = "<group>"; };
 		42873C551FE121D700F39512 /* CLOglColorMatrixFilter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CLOglColorMatrixFilter.cpp; sourceTree = "<group>"; };
 		42873C561FE121D700F39512 /* CLOglColorMatrixFilter.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CLOglColorMatrixFilter.hpp; sourceTree = "<group>"; };
 		42873C581FE1223B00F39512 /* CLOglFilter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CLOglFilter.cpp; sourceTree = "<group>"; };
@@ -140,6 +143,8 @@
 				42F8EA651FD6A1F80007229D /* CLOglFrameBuffer.cpp */,
 				42F8EA661FD6A1F80007229D /* CLOglFrameBuffer.hpp */,
 				429425A71FD62D7C001C3E35 /* CLOglGlobal.h */,
+				4259BA0C1FE51C8D001F6555 /* CLOglPixel.cpp */,
+				4259BA0D1FE51C8D001F6555 /* CLOglPixel.hpp */,
 				424BC2DA1FDFD2AE009DC0AF /* CLOglProgram.cpp */,
 				424BC2DB1FDFD2AE009DC0AF /* CLOglProgram.hpp */,
 				42CCCD2F1FE25B05003F1C6D /* CLOglSession.cpp */,
@@ -249,6 +254,7 @@
 			files = (
 				42CCCD311FE25B05003F1C6D /* CLOglSession.cpp in Sources */,
 				429425A31FD52AB7001C3E35 /* CLOOpenGLView.mm in Sources */,
+				4259BA0E1FE51C8D001F6555 /* CLOglPixel.cpp in Sources */,
 				42873C571FE121D700F39512 /* CLOglColorMatrixFilter.cpp in Sources */,
 				42873C5A1FE1223B00F39512 /* CLOglFilter.cpp in Sources */,
 				429425971FD52A08001C3E35 /* main.m in Sources */,

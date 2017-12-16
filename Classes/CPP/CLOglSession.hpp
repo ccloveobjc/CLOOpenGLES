@@ -31,6 +31,10 @@ public:
     bool fSetupImage(const uint32_t index, std::shared_ptr<CLOglTexture> texture);
     std::shared_ptr<CLOglTexture> fGetImage(const uint32_t index);
     
+    // 纹理输出 下标最大0
+    bool fSetupOutputTexture(const uint32_t index, std::shared_ptr<CLOglTexture> texture);
+    std::shared_ptr<CLOglTexture> fGetOutputTexture(const uint32_t index);
+    
     // Framebuffer
     std::shared_ptr<CLOglFrameBuffer> fGetOrCreateFramebuffer(const uint32_t width, const uint32_t height);
     
@@ -38,6 +42,7 @@ public:
     std::shared_ptr<CLOglProgram> fGetOrCreateProgram(const std::string vertexShaderCodeString, const std::string fragmentShaderCodeString);
 private:
     std::vector<std::shared_ptr<CLOglTexture>> mInputs;
+    std::vector<std::shared_ptr<CLOglTexture>> mOutputs;
     std::map<std::string, std::shared_ptr<CLOglFrameBuffer>> mFrameBufferCache;
     std::map<std::string, std::shared_ptr<CLOglProgram>> mProgramCache;
 };

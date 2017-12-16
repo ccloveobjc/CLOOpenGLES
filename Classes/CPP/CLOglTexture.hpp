@@ -27,8 +27,11 @@ public:
     uint32_t fGetWidth();
     uint32_t fGetHeight();
     
-    static std::shared_ptr<CLOglTexture> sCreateTexture(unsigned char *pPixel, uint32_t width, uint32_t height);
+    bool fUpdateSize(const uint32_t width, const uint32_t height);
     
+    static std::shared_ptr<CLOglTexture> sCreateTexture(unsigned char *pPixel, const uint32_t width, const uint32_t height);
+    
+    static bool sCreateTexture(CLOglTexture *pTexture, unsigned char *pPixel, const uint32_t width, const uint32_t height);
 private:
     uint32_t mTextureID = 0;
     uint32_t mWidth = 0;

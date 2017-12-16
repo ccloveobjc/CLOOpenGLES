@@ -16,6 +16,7 @@ CLOCNamespaceUse
 CLOglSession::CLOglSession()
 {
     mInputs.resize(32);
+    mOutputs.resize(1);
     CLOCLog("CLOglSession new");
 }
 
@@ -26,9 +27,9 @@ CLOglSession::~CLOglSession()
 
 bool CLOglSession::fSetupImage(const uint32_t index, std::shared_ptr<CLOglTexture> texture)
 {
-    if (index < 32) {
+    if (index < mInputs.size()) {
         
-        CLOCLog("设置纹理 %s  到 index:%u", texture->fDescription().c_str(), index);
+        CLOCLog("设置输入纹理 %s  到 index:%u", texture->fDescription().c_str(), index);
         mInputs[index] = texture;
         
         return true;
@@ -38,9 +39,31 @@ bool CLOglSession::fSetupImage(const uint32_t index, std::shared_ptr<CLOglTextur
 }
 std::shared_ptr<CLOglTexture> CLOglSession::fGetImage(const uint32_t index)
 {
-    if (index < 32) {
+    if (index < mInputs.size()) {
         
         return mInputs[index];
+    }
+    
+    return nullptr;
+}
+
+
+bool CLOglSession::fSetupOutputTexture(const uint32_t index, std::shared_ptr<CLOglTexture> texture)
+{
+    if (mOutputs.size() > index) {
+    
+        CLOCLog("设置输出纹理 %s  到 index:%u", texture->fDescription().c_str(), index);
+        mOutputs[index] = texture;
+        return true;
+    }
+    
+    return false;
+}
+std::shared_ptr<CLOglTexture> CLOglSession::fGetOutputTexture(const uint32_t index)
+{
+    if (index < mOutputs.size()) {
+        
+        return mOutputs[index];
     }
     
     return nullptr;

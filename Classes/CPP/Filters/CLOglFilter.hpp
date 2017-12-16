@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include "CLOglGlobal.h"
 #include <string>
+#include <vector>
 #include <memory>
 
 CLOCNamespaceS
@@ -27,8 +28,15 @@ public:
     CLOglFilter(std::shared_ptr<CLOglSession> session, const std::string vertexShaderCodeString, const std::string fragmentShaderCodeString);
     ~CLOglFilter();
     
+    std::string fDescription();
     
+    bool fUse();
     
+    int fGetAttribute_position();
+    int fGetAttribute_inputTextureCoordinate();
+    int fGetUniform_textureCoordinate();
+    
+    virtual bool fMake();
 private:
     std::shared_ptr<CLOglSession> mSession;
     std::shared_ptr<CLOglProgram> mProgram;

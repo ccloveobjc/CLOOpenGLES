@@ -9,6 +9,7 @@
 #include "CLOglCtr.hpp"
 #include "CLOglSession.hpp"
 #include "CLOglTexture.hpp"
+#include "CLOglFilter.hpp"
 #ifdef __APPLE__
     #include <OpenGLES/ES2/gl.h>
     #include <OpenGLES/ES2/glext.h>
@@ -41,11 +42,27 @@ bool CLOglCtr::fSetupImage(uint32_t index, unsigned char *pPixel, eImageType typ
 
 bool CLOglCtr::fSetupEffectString(std::string effectStr)
 {
+    mFilter = std::shared_ptr<CLOglFilter>(new CLOglFilter(mSession));
+    if (mFilter->fUse()) {
+        
+        return true;
+    }
     
     return false;
 }
 
 bool CLOglCtr::fMakeImage()
 {
+    if (mFilter) {
+        
+        return mFilter->fMake();
+    }
+    
     return false;
+}
+
+std::shared_ptr<CLOglPixel> CLOglCtr::fGetMakedImage()
+{
+//    auto output0 = mSession->fGetOrCreateOutputTexture(0, 0, 0);
+    return nullptr;
 }

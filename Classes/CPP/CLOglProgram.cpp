@@ -34,6 +34,11 @@ CLOglProgram::CLOglProgram(const std::string vertexShaderCodeString, const std::
 CLOglProgram::~CLOglProgram()
 {}
 
+std::string CLOglProgram::fDescription()
+{
+    return "mProgramID:" + std::to_string(mProgramID);
+}
+
 bool CLOglProgram::fLink()
 {
     if (mProgramID > 0) {
@@ -80,6 +85,12 @@ bool CLOglProgram::fUse()
     return false;
 }
 
+GLuint CLOglProgram::fGetProgramID()
+{
+    return mProgramID;
+}
+
+// private
 bool CLOglProgram::fCompileShader(GLuint *shader, const GLenum type, const std::string shaderCodeString)
 {
     const GLchar *source = const_cast<GLchar *>(shaderCodeString.c_str());
@@ -125,3 +136,5 @@ bool CLOglProgram::fCompileShader(GLuint *shader, const GLenum type, const std::
     
     return status == GL_TRUE;
 }
+
+

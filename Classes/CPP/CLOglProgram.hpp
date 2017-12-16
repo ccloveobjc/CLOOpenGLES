@@ -22,9 +22,12 @@ public:
     CLOglProgram(const std::string vertexShaderCodeString, const std::string fragmentShaderCodeString);
     ~CLOglProgram();
     
+    std::string fDescription();
+    
     bool fLink();
     bool fUse();
     
+    GLuint fGetProgramID();
 private:
     
     bool fCompileShader(GLuint *shader, const GLenum type, const std::string shaderCodeString);

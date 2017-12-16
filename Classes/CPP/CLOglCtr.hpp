@@ -19,6 +19,7 @@ CLOCNamespaceS
 class CLOglTexture;
 class CLOglFilter;
 class CLOglSession;
+class CLOglPixel;
 
 class CLOglCtr {
 public:
@@ -31,9 +32,11 @@ public:
     bool fSetupEffectString(std::string effectStr);
     
     bool fMakeImage();
+    std::shared_ptr<CLOglPixel> fGetMakedImage();
     
 private:
     std::shared_ptr<CLOglSession> mSession;
+    std::shared_ptr<CLOglFilter> mFilter;
 };
 
 CLOCNamespaceE

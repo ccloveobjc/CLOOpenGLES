@@ -78,7 +78,14 @@
 
 - (BOOL)fMake
 {
-    return NO;
+    __block BOOL bRet = NO;
+    CLOWS
+    [self.mGLContext fRunSynchronouslyOnContextQueue:^{
+        CLOSS
+        bRet = self.m_glCtr->fMakeImage();
+    }];
+    
+    return bRet;
 }
 
 - (UIImage *)fGetMakedImage

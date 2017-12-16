@@ -47,8 +47,49 @@ uint32_t CLOglTexture::fGetTextureID() { return mTextureID; }
 uint32_t CLOglTexture::fGetWidth() { return mWidth; }
 uint32_t CLOglTexture::fGetHeight() { return mHeight; }
 
-std::shared_ptr<CLOglTexture> CLOglTexture::sCreateTexture(unsigned char *pPixel, uint32_t width, uint32_t height)
+
+bool CLOglTexture::fUpdateSize(const uint32_t width, const uint32_t height)
 {
+    if (width == fGetWidth() && height == fGetHeight()) {
+        
+        return true;
+    }
+    
+    if (mTextureID > 0) {
+    
+        mWidth = width;
+        mHeight = height;
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, mTextureID);
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, 0);
+    }
+    else {
+        
+        
+    }
+    
+    return true;
+}
+
+std::shared_ptr<CLOglTexture> CLOglTexture::sCreateTexture(unsigned char *pPixel, const uint32_t width, const uint32_t height)
+{
+    auto texture = new CLOglTexture();
+    if (CLOglTexture::sCreateTexture(texture, pPixel, width, height)) {
+    
+        return std::shared_ptr<CLOglTexture>(texture);
+    }
+    else {
+        
+        CLOCClassRelease(texture);
+    }
+    
+    return nullptr;
+}
+
+bool CLOglTexture::sCreateTexture(CLOglTexture *pTexture, unsigned char *pPixel, const uint32_t width, const uint32_t height)
+{
+    pTexture->fDeleteTexture();
+    
     GLuint FValue = 0;
     glActiveTexture(GL_TEXTURE0);
     glGenTextures(1, &FValue);
@@ -67,7 +108,6 @@ std::shared_ptr<CLOglTexture> CLOglTexture::sCreateTexture(unsigned char *pPixel
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, 0);
     }
     
-    auto pTexture = new CLOglTexture();
     pTexture->mTextureID = FValue;
     pTexture->mWidth = width;
     pTexture->mHeight = height;
@@ -77,9 +117,8 @@ std::shared_ptr<CLOglTexture> CLOglTexture::sCreateTexture(unsigned char *pPixel
     
     CLOCLog("创建纹理 %s", pTexture->fDescription().c_str());
     
-    return std::shared_ptr<CLOglTexture>(pTexture);
+    return true;
 }
-
 ///  Private:
 bool CLOglTexture::fDeleteTexture()
 {
