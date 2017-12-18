@@ -104,7 +104,7 @@ bool CLOglProgram::fCompileShader(GLuint *shader, const GLenum type, const std::
     GLint status;
     glGetShaderiv(shaderID, GL_COMPILE_STATUS, &status);
     if (status != GL_TRUE) {
-        
+        // 打印日志
         GLint logLength = 0;
         glGetShaderiv(shaderID, GL_INFO_LOG_LENGTH, &logLength);
         if (logLength > 0) {

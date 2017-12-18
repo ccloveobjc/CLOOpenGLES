@@ -113,8 +113,6 @@ bool CLOglTexture::sCreateTexture(CLOglTexture *pTexture, unsigned char *pPixel,
     pTexture->mHeight = height;
     pTexture->mNeedFree = true;
     
-    glBindTexture(GL_TEXTURE_2D, 0);
-    
     CLOCLog("创建纹理 %s", pTexture->fDescription().c_str());
     
     return true;

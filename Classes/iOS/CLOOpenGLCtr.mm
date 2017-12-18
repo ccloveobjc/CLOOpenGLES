@@ -13,6 +13,7 @@
 
 #include "CLOglCtr.hpp"
 #include "CLOglFilter.hpp"
+#include "CLOglPixel.hpp"
 
 @interface CLOOpenGLCtr()
 
@@ -90,6 +91,14 @@
 
 - (UIImage *)fGetMakedImage
 {
-    return nil;
+    __block UIImage *imgRet = nil;
+    CLOWS
+    [self.mGLContext fRunSynchronouslyOnContextQueue:^{
+        CLOSS
+        auto pixel = self.m_glCtr->fGetMakedImage();
+        imgRet = [CLOOpenGLImageUtility sGetUIImage:pixel->fGetRAW() withW:pixel->fGetWidth() withH:pixel->fGetHeight() withPremultiplied:NO];
+    }];
+    
+    return imgRet;
 }
 @end

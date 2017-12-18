@@ -23,6 +23,7 @@
 CLOCNamespaceS
 
 class CLOglTexture;
+class CLOglPixel;
 
 class CLOglFrameBuffer {
 public:
@@ -33,10 +34,11 @@ public:
     
     bool fBindTexture(std::shared_ptr<CLOglTexture> texture);
     
+    std::shared_ptr<CLOglPixel> fReadPixels();
 private:
     uint32_t mWidth = 0;
     uint32_t mHeight = 0;
-    GLuint mFramebufferID;
+    GLuint mFramebufferID = 0;
     
     std::shared_ptr<CLOglTexture> mTexture = nullptr;
 };

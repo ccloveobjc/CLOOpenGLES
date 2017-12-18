@@ -10,6 +10,7 @@
 #include "CLOglSession.hpp"
 #include "CLOglTexture.hpp"
 #include "CLOglFilter.hpp"
+#include "CLOglFrameBuffer.hpp"
 #ifdef __APPLE__
     #include <OpenGLES/ES2/gl.h>
     #include <OpenGLES/ES2/glext.h>
@@ -63,6 +64,19 @@ bool CLOglCtr::fMakeImage()
 
 std::shared_ptr<CLOglPixel> CLOglCtr::fGetMakedImage()
 {
-//    auto output0 = mSession->fGetOrCreateOutputTexture(0, 0, 0);
-    return nullptr;
+    auto output0 = mSession->fGetOutputTexture(0);
+    if ( ! output0) {
+        
+        return nullptr;
+    }
+    
+    auto framebuffer = mSession->fGetOrCreateFramebuffer(output0->fGetWidth(), output0->fGetHeight());
+    if ( ! framebuffer) {
+        
+        return nullptr;
+    }
+    
+    framebuffer->fBindTexture(output0);
+    
+    return framebuffer->fReadPixels();
 }

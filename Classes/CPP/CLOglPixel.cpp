@@ -42,14 +42,12 @@ int CLOglPixel::fGetHeight()
 }
 int CLOglPixel::fGetRowStep()
 {
-    if (mRowstep > 0) {
+    if (mRowstep == 0) {
         
-        return mRowstep;
+        mRowstep = fGetWidth() * 4;
     }
-    else {
-        
-        return fGetWidth() * 4;
-    }
+    
+    return mRowstep;
 }
 
 void CLOglPixel::fExchange(CLOglPixel *raw)

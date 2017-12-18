@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4212694A1FE7B84100B1397D /* UICDisplayImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 421269491FE7B84000B1397D /* UICDisplayImageView.m */; };
+		4212694D1FE7BDBF00B1397D /* CameraDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4212694C1FE7BDBF00B1397D /* CameraDemoVC.m */; };
+		421269551FE7C00C00B1397D /* PGCameraDefine.m in Sources */ = {isa = PBXBuildFile; fileRef = 421269511FE7C00B00B1397D /* PGCameraDefine.m */; };
+		421269561FE7C00C00B1397D /* PGCameraManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 421269531FE7C00B00B1397D /* PGCameraManager.m */; };
 		42426DA11FE3773F00F03369 /* CLOglCommon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 42426D9F1FE3773F00F03369 /* CLOglCommon.cpp */; };
 		424BC2DC1FDFD2AE009DC0AF /* CLOglProgram.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 424BC2DA1FDFD2AE009DC0AF /* CLOglProgram.cpp */; };
 		4259BA0E1FE51C8D001F6555 /* CLOglPixel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4259BA0C1FE51C8D001F6555 /* CLOglPixel.cpp */; };
@@ -29,6 +33,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		421269481FE7B84000B1397D /* UICDisplayImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICDisplayImageView.h; sourceTree = "<group>"; };
+		421269491FE7B84000B1397D /* UICDisplayImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICDisplayImageView.m; sourceTree = "<group>"; };
+		4212694B1FE7BDBF00B1397D /* CameraDemoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CameraDemoVC.h; sourceTree = "<group>"; };
+		4212694C1FE7BDBF00B1397D /* CameraDemoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CameraDemoVC.m; sourceTree = "<group>"; };
+		421269501FE7C00B00B1397D /* PGCameraDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGCameraDefine.h; sourceTree = "<group>"; };
+		421269511FE7C00B00B1397D /* PGCameraDefine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGCameraDefine.m; sourceTree = "<group>"; };
+		421269521FE7C00B00B1397D /* PGCameraManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGCameraManager.h; sourceTree = "<group>"; };
+		421269531FE7C00B00B1397D /* PGCameraManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGCameraManager.m; sourceTree = "<group>"; };
+		421269541FE7C00B00B1397D /* PGCameraManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGCameraManagerDelegate.h; sourceTree = "<group>"; };
 		42426D9F1FE3773F00F03369 /* CLOglCommon.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CLOglCommon.cpp; sourceTree = "<group>"; };
 		42426DA01FE3773F00F03369 /* CLOglCommon.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CLOglCommon.hpp; sourceTree = "<group>"; };
 		424BC2DA1FDFD2AE009DC0AF /* CLOglProgram.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CLOglProgram.cpp; sourceTree = "<group>"; };
@@ -80,6 +93,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		421269471FE7B84000B1397D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				421269481FE7B84000B1397D /* UICDisplayImageView.h */,
+				421269491FE7B84000B1397D /* UICDisplayImageView.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4212694E1FE7C00B00B1397D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4212694F1FE7C00B00B1397D /* PGCameraManager */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		4212694F1FE7C00B00B1397D /* PGCameraManager */ = {
+			isa = PBXGroup;
+			children = (
+				421269501FE7C00B00B1397D /* PGCameraDefine.h */,
+				421269511FE7C00B00B1397D /* PGCameraDefine.m */,
+				421269521FE7C00B00B1397D /* PGCameraManager.h */,
+				421269531FE7C00B00B1397D /* PGCameraManager.m */,
+				421269541FE7C00B00B1397D /* PGCameraManagerDelegate.h */,
+			);
+			path = PGCameraManager;
+			sourceTree = "<group>";
+		};
 		424BC2D91FDFD224009DC0AF /* Filters */ = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +160,8 @@
 				429425951FD52A08001C3E35 /* Info.plist */,
 				429425961FD52A08001C3E35 /* main.m */,
 				42CCCD281FE22564003F1C6D /* DemoVCs */,
+				421269471FE7B84000B1397D /* Views */,
+				4212694E1FE7C00B00B1397D /* Models */,
 				4294259E1FD52A61001C3E35 /* Classes */,
 			);
 			path = CLOOpenGLESDemo;
@@ -177,6 +221,8 @@
 			children = (
 				42CCCD291FE22564003F1C6D /* PhotoMakeDemoVC.h */,
 				42CCCD2A1FE22564003F1C6D /* PhotoMakeDemoVC.m */,
+				4212694B1FE7BDBF00B1397D /* CameraDemoVC.h */,
+				4212694C1FE7BDBF00B1397D /* CameraDemoVC.m */,
 			);
 			path = DemoVCs;
 			sourceTree = "<group>";
@@ -253,6 +299,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				42CCCD311FE25B05003F1C6D /* CLOglSession.cpp in Sources */,
+				4212694A1FE7B84100B1397D /* UICDisplayImageView.m in Sources */,
 				429425A31FD52AB7001C3E35 /* CLOOpenGLView.mm in Sources */,
 				4259BA0E1FE51C8D001F6555 /* CLOglPixel.cpp in Sources */,
 				42873C571FE121D700F39512 /* CLOglColorMatrixFilter.cpp in Sources */,
@@ -261,9 +308,12 @@
 				429425891FD52A08001C3E35 /* AppDelegate.m in Sources */,
 				424BC2DC1FDFD2AE009DC0AF /* CLOglProgram.cpp in Sources */,
 				42CCCD2B1FE22564003F1C6D /* PhotoMakeDemoVC.m in Sources */,
+				421269551FE7C00C00B1397D /* PGCameraDefine.m in Sources */,
 				42426DA11FE3773F00F03369 /* CLOglCommon.cpp in Sources */,
 				42F8EA671FD6A1F80007229D /* CLOglFrameBuffer.cpp in Sources */,
+				4212694D1FE7BDBF00B1397D /* CameraDemoVC.m in Sources */,
 				42CCCD2E1FE2525B003F1C6D /* CLOOpenGLImageUtility.mm in Sources */,
+				421269561FE7C00C00B1397D /* PGCameraManager.m in Sources */,
 				429425AA1FD637C5001C3E35 /* CLOglTexture.cpp in Sources */,
 				429425B01FD649C7001C3E35 /* CLOOpenGLContext.mm in Sources */,
 				429425AD1FD64925001C3E35 /* CLOOpenGLCtr.mm in Sources */,

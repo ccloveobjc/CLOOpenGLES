@@ -34,7 +34,7 @@ public:
     
     int fGetAttribute_position();
     int fGetAttribute_inputTextureCoordinate();
-    int fGetUniform_textureCoordinate();
+    int fGetUniform_inputImageTexture();
     
     virtual bool fMake();
 private:

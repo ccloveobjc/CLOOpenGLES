@@ -8,6 +8,7 @@
 
 #include "CLOglFrameBuffer.hpp"
 #include "CLOglTexture.hpp"
+#include "CLOglPixel.hpp"
 
 CLOCNamespaceUse
 
@@ -56,4 +57,22 @@ bool CLOglFrameBuffer::fBindTexture(std::shared_ptr<CLOglTexture> texture)
     }
     
     return false;
+}
+
+std::shared_ptr<CLOglPixel> CLOglFrameBuffer::fReadPixels()
+{
+    if (mFramebufferID > 0) {
+    
+        glBindFramebuffer(GL_FRAMEBUFFER, mFramebufferID);
+        
+        unsigned char * pixels = new unsigned char[mWidth * mHeight * 4];
+        glReadPixels(0, 0, mWidth, mHeight, GL_RGBA, GL_UNSIGNED_BYTE, pixels);
+        
+        CLOglPixel *cloPixel = new CLOglPixel(pixels, mWidth, mHeight, 0, true);
+        std::shared_ptr<CLOglPixel> sPixel = std::shared_ptr<CLOglPixel>(cloPixel);
+        
+        return sPixel;
+    }
+    
+    return nullptr;
 }

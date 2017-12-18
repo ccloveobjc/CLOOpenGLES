@@ -10,13 +10,14 @@
 #import "CLOOpenGLCtr.h"
 #import "CLOOpenGLView.h"
 #import "CLOOpenGLGlobal.h"
+#import "UICDisplayImageView.h"
 
 @interface PhotoMakeDemoVC ()
 
     @property (nonatomic,strong) CLOOpenGLCtr *mOpenGLCtr;
     @property (nonatomic,strong) CLOOpenGLView *mOpenGLView;
 
-    @property (weak, nonatomic) IBOutlet UIImageView *mImgPreview;
+    @property (weak, nonatomic) IBOutlet UICDisplayImageView *mImgPreview;
 
 @end
 
@@ -41,7 +42,7 @@
 //    self.mOpenGLView.frame = CGRectMake(0, 0, w, h);
 //    [self.view addSubview:self.mOpenGLView];
     UIImage *img = [UIImage imageNamed:@"Lambeau"];
-    self.mImgPreview.image = img;
+    [self.mImgPreview pSetupOrigImage:img];
 }
 
 - (void)dealloc
@@ -51,15 +52,17 @@
 
 - (IBAction)onStartMakeImage:(UIButton *)sender
 {
-    if (self.mImgPreview.image) {
+    UIImage *oriImg = self.mImgPreview.mOrigImage;
+    if (oriImg) {
         
-        CLONSLog(@"开始做图 img: %@", self.mImgPreview.image);
+        CLONSLog(@"开始做图 img: %@", oriImg);
         
-        [self.mOpenGLCtr fSetupImage:self.mImgPreview.image withIndex:0];
+        [self.mOpenGLCtr fSetupImage:oriImg withIndex:0];
         [self.mOpenGLCtr fSetupEffect:@"Effect=Normal"];
         [self.mOpenGLCtr fMake];
         UIImage *outImg = [self.mOpenGLCtr fGetMakedImage];
         
+        [self.mImgPreview pSetupPreviewImage:outImg];
         CLONSLog(@"做图完成  img: %@", outImg);
     }
 }
