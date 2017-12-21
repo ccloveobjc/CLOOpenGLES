@@ -39,11 +39,20 @@
 
 - (void)dealloc
 {
-    CLOCClassRelease(_m_glCtr);
+    [_mGLContext fRunSynchronouslyOnContextQueue:^{
+        
+        CLOCClassRelease(_m_glCtr);
+    }];
+    
     CLONSLog(@"CLOOpenGLCtr dealloc");
 }
 
-- (BOOL)fSetupImage:(UIImage *)img withIndex:(NSUInteger)index
+- (void *)fGetCLOglCtr
+{
+    return _m_glCtr;
+}
+
+- (BOOL)fSetupIndex:(NSUInteger)index withUIImage:(UIImage *)img
 {
     __block BOOL bRet = NO;
     if (img.size.width > 0 && img.size.height > 0) {
@@ -58,6 +67,19 @@
             }];
         }
         CLOCArrayRelease(ucImg);
+    }
+    
+    return bRet;
+}
+- (BOOL)fSetupIndex:(NSUInteger)index withTextureID:(int)textureID withWidth:(int)width withHeight:(int)height withNeedFree:(bool)needFree
+{
+    __block BOOL bRet = NO;
+    if (textureID > 0 && width > 0 && height > 0) {
+        CLOWS
+        [self.mGLContext fRunSynchronouslyOnContextQueue:^{
+            CLOSS
+            bRet = self.m_glCtr->fSetupImage(0, textureID, width, height, needFree);
+        }];
     }
     
     return bRet;

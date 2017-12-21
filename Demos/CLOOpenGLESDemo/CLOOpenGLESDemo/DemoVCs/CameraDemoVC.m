@@ -11,6 +11,7 @@
 #import "CLOOpenGLCtr.h"
 #import "CLOOpenGLView.h"
 #import "CLOOpenGLGlobal.h"
+#import "UIImage+pg_common_unitils.h"
 
 @interface CameraDemoVC ()
 <
@@ -60,8 +61,9 @@
     CGFloat y = (self.mPreviewView.bounds.size.height - h) / 2.0;
     CGRect pFrame = CGRectMake(0, y, w, h);
     CLOOpenGLCtr *glCtr = [[CLOOpenGLCtr alloc] init];
+    [glCtr fSetupEffect:@"Effect=Normal"];
     self.mGLView = [[CLOOpenGLView alloc] initWithFrame:pFrame withGLCtr:glCtr];
-    [self.view addSubview:self.mGLView];
+    [self.mPreviewView addSubview:self.mGLView];
 }
 
 #pragma mark - 渲染 buffer
@@ -71,15 +73,20 @@
     [DefaultCamera initForPreview];
     [DefaultCamera initForCaputre];
     [DefaultCamera initForRender];
-    [DefaultCamera pSetupNewSDK];
+    
     
     [DefaultCamera setResolution:AVCaptureSessionPresetPhoto];
     
-    [DefaultCamera setCameraPosition:PGCameraPositonBack];
-    [DefaultCamera setSupportsMirroring:NO];
+    [DefaultCamera setCameraPosition:PGCameraPositonFront];
+    [DefaultCamera setSupportsMirroring:YES];
+    
+    [DefaultCamera pSetupNewSDK];
 }
 - (void)cameraManager:(PGCameraManager *)cameraManager withPreviewImage:(CMSampleBufferRef)sampleBuffer
 {
+    CGImageRef imgRef = [UIImage c_common_CGImageFromSampleBuffer:sampleBuffer];
+    UIImage *img = [[UIImage alloc] initWithCGImage:imgRef];
+    
     if ( ! [self.mGLView fRenderBuffer:sampleBuffer]) {
         
         CLONSLog(@"renderBuffer 错误 !");

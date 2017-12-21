@@ -99,7 +99,7 @@ int CLOglFilter::fGetUniform_inputImageTexture()
 }
 
 
-bool CLOglFilter::fMake()
+bool CLOglFilter::fMake(const GLfloat *pVertices, const GLfloat *pTextureCoordinates)
 {
     auto input0 = mSession->fGetImage(0);
     if (!input0) {
@@ -115,56 +115,24 @@ bool CLOglFilter::fMake()
         return false;
     }
     
-    auto framebuffer = mSession->fGetOrCreateFramebuffer(input0->fGetWidth(), input0->fGetHeight());
-    auto output0 = mSession->fGetOutputTexture(0);
-    if (!output0) {
-        
-        auto outText = CLOglTexture::sCreateTexture(nullptr, input0->fGetWidth(), input0->fGetHeight());
-        output0 = std::shared_ptr<CLOglTexture>(outText);
-        mSession->fSetupOutputTexture(0, output0);
-    }
-    else {
-        
-        output0->fUpdateSize(input0->fGetWidth(), input0->fGetHeight());
-    }
-    
-    if (!framebuffer->fBindTexture(output0)) {
-        
-        CLOCLog("绑定 framebuffer:%s 和 texture:%s 错误！", framebuffer->fDescription().c_str(), output0->fDescription().c_str());
-        return false;
-    }
-    
-    glViewport(0, 0, input0->fGetWidth(), input0->fGetHeight());
-    
     glClearColor(255, 0, 255, 255);
     glClear(GL_COLOR_BUFFER_BIT);
     
-    
+    if ( ! onSetupParams()) {
+        
+        return false;
+    }
     
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, input0->fGetTextureID());
     glUniform1i(fGetUniform_inputImageTexture(), 0);
-
+    
     int position_id = fGetAttribute_position();
-    static const GLfloat imageVertices[] = {
-        -1.0f, -1.0f,
-        1.0f, -1.0f,
-        -1.0f,  1.0f,
-        1.0f,  1.0f,
-    };
-
-    glVertexAttribPointer(position_id, 2, GL_FLOAT, 0, 0, imageVertices); // 2 2维
+    glVertexAttribPointer(position_id, 2, GL_FLOAT, 0, 0, pVertices); // 2 2维
     glEnableVertexAttribArray(position_id);
     
     int inputTextureCoordinate_id = fGetAttribute_inputTextureCoordinate();
-    static const GLfloat noRotationTextureCoordinates[] = {
-        0.0f, 0.0f,
-        1.0f, 0.0f,
-        0.0f, 1.0f,
-        1.0f, 1.0f,
-    };
-
-    glVertexAttribPointer(inputTextureCoordinate_id, 2, GL_FLOAT, 0, 0, noRotationTextureCoordinates);
+    glVertexAttribPointer(inputTextureCoordinate_id, 2, GL_FLOAT, 0, 0, pTextureCoordinates);
     glEnableVertexAttribArray(inputTextureCoordinate_id);
     
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
@@ -177,5 +145,10 @@ bool CLOglFilter::fMake()
         CLOCAssert(false, "");
     }
     
+    return true;
+}
+
+bool CLOglFilter::onSetupParams()
+{
     return true;
 }

@@ -17,7 +17,11 @@
 
 - (instancetype)init;
 
-- (BOOL)fSetupImage:(UIImage *)img withIndex:(NSUInteger)index;
+// CLO::CLOglCtr 格式
+- (void *)fGetCLOglCtr;
+
+- (BOOL)fSetupIndex:(NSUInteger)index withUIImage:(UIImage *)img;
+- (BOOL)fSetupIndex:(NSUInteger)index withTextureID:(int)textureID withWidth:(int)width withHeight:(int)height withNeedFree:(bool)needFree;
 
 - (BOOL)fSetupEffect:(NSString *)string;
 

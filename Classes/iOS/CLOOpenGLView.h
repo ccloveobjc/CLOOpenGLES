@@ -17,6 +17,6 @@
 
 - (instancetype)initWithFrame:(CGRect)frame withGLCtr:(CLOOpenGLCtr *)ctr;
 
-- (BOOL)fRenderBuffer:(CMSampleBufferRef)buffer;
+- (BOOL)fRenderBuffer:(CMSampleBufferRef)sampleBuffer;
 
 @end

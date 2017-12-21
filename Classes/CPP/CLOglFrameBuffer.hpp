@@ -9,6 +9,7 @@
 #ifndef CLOglFrameBuffer_hpp
 #define CLOglFrameBuffer_hpp
 
+#include <stdio.h>
 #include "CLOglGlobal.h"
 #include <memory>
 #include <string>
@@ -24,6 +25,7 @@ CLOCNamespaceS
 
 class CLOglTexture;
 class CLOglPixel;
+class CLOglRenderBuffer;
 
 class CLOglFrameBuffer {
 public:
@@ -32,7 +34,15 @@ public:
     
     std::string fDescription();
     
+    GLuint fGetFramebufferID();
+    uint32_t fGetWidth();
+    uint32_t fGetHeight();
+    
+    bool fBind();
+    bool fBind(uint32_t width, uint32_t height);
+    
     bool fBindTexture(std::shared_ptr<CLOglTexture> texture);
+    bool fBindRenderbuffer(std::shared_ptr<CLOglRenderBuffer> renderbuffer);
     
     std::shared_ptr<CLOglPixel> fReadPixels();
 private:

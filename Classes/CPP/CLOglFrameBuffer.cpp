@@ -9,6 +9,7 @@
 #include "CLOglFrameBuffer.hpp"
 #include "CLOglTexture.hpp"
 #include "CLOglPixel.hpp"
+#include "CLOglRenderBuffer.hpp"
 
 CLOCNamespaceUse
 
@@ -33,6 +34,32 @@ std::string CLOglFrameBuffer::fDescription()
     + "   Height:" + std::to_string(mHeight);
 }
 
+GLuint CLOglFrameBuffer::fGetFramebufferID() { return mFramebufferID; }
+uint32_t CLOglFrameBuffer::fGetWidth() { return mWidth; }
+uint32_t CLOglFrameBuffer::fGetHeight() { return mHeight; }
+
+bool CLOglFrameBuffer::fBind()
+{
+    if (mFramebufferID > 0) {
+        
+        glBindFramebuffer(GL_FRAMEBUFFER, mFramebufferID);
+        glViewport(0, 0, mWidth, mHeight);
+        return true;
+    }
+    
+    return false;
+}
+bool CLOglFrameBuffer::fBind(uint32_t width, uint32_t height)
+{
+    if (mWidth != width || mHeight != height) {
+        
+        mWidth = width;
+        mHeight = height;
+    }
+    
+    return fBind();
+}
+
 bool CLOglFrameBuffer::fBindTexture(std::shared_ptr<CLOglTexture> texture)
 {
     if (texture == nullptr) {
@@ -44,7 +71,7 @@ bool CLOglFrameBuffer::fBindTexture(std::shared_ptr<CLOglTexture> texture)
         return true;
     }
     
-    if (texture.get() && texture->fGetWidth() == mWidth && texture->fGetHeight() == mHeight) {
+    if (mFramebufferID > 0 && texture.get() && texture->fGetWidth() == mWidth && texture->fGetHeight() == mHeight) {
         
         mTexture = texture;
         uint32_t textID = texture->fGetTextureID();
@@ -54,6 +81,31 @@ bool CLOglFrameBuffer::fBindTexture(std::shared_ptr<CLOglTexture> texture)
         glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, textID, 0);
         glViewport(0, 0, mWidth, mHeight);
         return true;
+    }
+    
+    return false;
+}
+
+bool CLOglFrameBuffer::fBindRenderbuffer(std::shared_ptr<CLOglRenderBuffer> renderbuffer)
+{
+    if (renderbuffer == nullptr) {
+    
+        glBindFramebuffer(GL_FRAMEBUFFER, mFramebufferID);
+        glBindRenderbuffer(GL_RENDERBUFFER, 0);
+        return true;
+    }
+   
+    if (mFramebufferID > 0) {
+        
+        glBindFramebuffer(GL_FRAMEBUFFER, mFramebufferID);
+        if (renderbuffer->fBind()) {
+        
+            glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_RENDERBUFFER, renderbuffer->fGetRenderbufferID());
+            return true;
+        }
+        else {
+            CLOCLog("renderbuffer fBind 失败. Error: %s", renderbuffer->fDescription().c_str());
+        }
     }
     
     return false;

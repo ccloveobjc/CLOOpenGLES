@@ -43,6 +43,7 @@
 //    [self.view addSubview:self.mOpenGLView];
     UIImage *img = [UIImage imageNamed:@"Lambeau"];
     [self.mImgPreview pSetupOrigImage:img];
+    [self.mOpenGLCtr fSetupIndex:0 withUIImage:img];
 }
 
 - (void)dealloc
@@ -57,7 +58,6 @@
         
         CLONSLog(@"开始做图 img: %@", oriImg);
         
-        [self.mOpenGLCtr fSetupImage:oriImg withIndex:0];
         [self.mOpenGLCtr fSetupEffect:@"Effect=Normal"];
         [self.mOpenGLCtr fMake];
         UIImage *outImg = [self.mOpenGLCtr fGetMakedImage];
