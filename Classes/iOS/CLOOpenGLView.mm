@@ -130,20 +130,20 @@
         
         CLO::CLOglCtr *glCtr = static_cast<CLO::CLOglCtr *>([self.mGLCtr fGetCLOglCtr]);
         
-        static const GLfloat imageVertices2[] = {
+        static const GLfloat imageVertices[] = {
             -1.0f, -1.0f,
             1.0f, -1.0f,
             -1.0f,  1.0f,
             1.0f,  1.0f,
         };
-        static const GLfloat noRotationTextureCoordinates2[] = {
+        static const GLfloat noRotationTextureCoordinates[] = {
             0.0f, 1.0f,
             1.0f, 1.0f,
             0.0f, 0.0f,
             1.0f, 0.0f,
         };
         
-        glCtr->fMakeImage(self.mFramebuffer, imageVertices2, noRotationTextureCoordinates2);
+        glCtr->fMakeImage(self.mFramebuffer, imageVertices, noRotationTextureCoordinates);
         
         bRet = [self.mGLCtr.mGLContext.mEAGLContext presentRenderbuffer:GL_RENDERBUFFER];
     }];
