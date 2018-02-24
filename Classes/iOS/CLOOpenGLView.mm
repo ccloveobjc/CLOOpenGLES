@@ -22,6 +22,8 @@
     @property (nonatomic,assign) std::shared_ptr<CLO::CLOglRenderBuffer> mRenderbuffer;
     @property (nonatomic,assign) CVOpenGLESTextureCacheRef mOpenGLESTextureCacheRef;
 
+    @property (nonatomic,assign) CLO::CLOglCtr *mglCtr;
+
 @end
 @implementation CLOOpenGLView
 
@@ -50,7 +52,7 @@
         CAEAGLLayer *eaglLayer = (CAEAGLLayer *)self.layer;
         eaglLayer.opaque = YES;
         eaglLayer.drawableProperties = @{
-                                         kEAGLDrawablePropertyRetainedBacking : @YES ,
+                                         kEAGLDrawablePropertyRetainedBacking : @NO ,
                                          kEAGLDrawablePropertyColorFormat : kEAGLColorFormatRGBA8 ,
                                          };
         
@@ -105,6 +107,16 @@
     // TODO:
 }
 
+- (CLO::CLOglCtr *)mglCtr
+{
+    if ( ! _mglCtr) {
+        
+        _mglCtr = static_cast<CLO::CLOglCtr *>([self.mGLCtr fGetCLOglCtr]);
+    }
+    
+    return _mglCtr;
+}
+
 - (BOOL)fRenderBuffer:(CMSampleBufferRef)buffer
 {
     __block BOOL bRet = NO;
@@ -113,12 +125,14 @@
     int textureID = 0, width = 0, height = 0;
     if ( ! [self fGetTextureIDFormSampleBuffer:buffer withOutTextureID:&textureID withOutWidth:&width withOutHeight:&height]) {
         
+        CLOCAssert(false, "");
         return NO;
     }
     
     // 设置图片到 index = 0
     if ( ! [self.mGLCtr fSetupIndex:0 withTextureID:textureID withWidth:width withHeight:height withNeedFree:false]) {
         
+        CLOCAssert(false, "");
         return NO;
     }
     
@@ -126,9 +140,12 @@
     [self.mGLCtr.mGLContext fRunSynchronouslyOnContextQueue:^{
         CLOSS
        
-        self.mFramebuffer->fBind(width, height);
-        
-        CLO::CLOglCtr *glCtr = static_cast<CLO::CLOglCtr *>([self.mGLCtr fGetCLOglCtr]);
+        if ( ! self.mFramebuffer->fBind(width, height)) {
+            
+            CLOCAssert(false, "");
+            bRet = false;
+            return;
+        }
         
         static const GLfloat imageVertices[] = {
             -1.0f, -1.0f,
@@ -143,7 +160,15 @@
             1.0f, 0.0f,
         };
         
-        glCtr->fMakeImage(self.mFramebuffer, imageVertices, noRotationTextureCoordinates);
+        if (self.mglCtr) {
+        
+            self.mglCtr->fMakeImage(self.mFramebuffer, imageVertices, noRotationTextureCoordinates);
+        }
+        else {
+            CLOCAssert(false, "");
+            bRet = false;
+            return;
+        }
         
         bRet = [self.mGLCtr.mGLContext.mEAGLContext presentRenderbuffer:GL_RENDERBUFFER];
     }];

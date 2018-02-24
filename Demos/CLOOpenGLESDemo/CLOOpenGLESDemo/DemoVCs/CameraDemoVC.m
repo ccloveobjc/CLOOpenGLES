@@ -84,8 +84,8 @@
 }
 - (void)cameraManager:(PGCameraManager *)cameraManager withPreviewImage:(CMSampleBufferRef)sampleBuffer
 {
-    CGImageRef imgRef = [UIImage c_common_CGImageFromSampleBuffer:sampleBuffer];
-    UIImage *img = [[UIImage alloc] initWithCGImage:imgRef];
+//    CGImageRef imgRef = [UIImage c_common_CGImageFromSampleBuffer:sampleBuffer];
+//    UIImage *img = [[UIImage alloc] initWithCGImage:imgRef];
     
     if ( ! [self.mGLView fRenderBuffer:sampleBuffer]) {
         

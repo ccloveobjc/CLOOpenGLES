@@ -32,7 +32,13 @@ CLOglProgram::CLOglProgram(const std::string vertexShaderCodeString, const std::
 }
 
 CLOglProgram::~CLOglProgram()
-{}
+{
+    if (mProgramID != 0) {
+        
+        glDeleteProgram(mProgramID);
+        mProgramID = 0;
+    }
+}
 
 std::string CLOglProgram::fDescription()
 {

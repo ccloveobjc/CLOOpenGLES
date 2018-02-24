@@ -24,7 +24,11 @@ CLOglFrameBuffer::CLOglFrameBuffer(uint32_t width, uint32_t height)
 
 CLOglFrameBuffer::~CLOglFrameBuffer()
 {
-    
+    if (mFramebufferID != 0) {
+        
+        glDeleteFramebuffers(1, &mFramebufferID);
+        mFramebufferID = 0;
+    }
 }
 
 std::string CLOglFrameBuffer::fDescription()
